@@ -1,0 +1,38 @@
+html {
+  text-align: center;
+}
+
+h1 {
+  margin-top: 10%;
+}
+
+
+#quoteoutput {
+  border: 1px solid #33C3F0;
+  height: 300px;
+  margin: 0 auto;
+  margin-left: 4%;
+}
+
+#container {
+  margin: 0 auto;
+  width: 80%;
+}
+
+
+/* Styling the svg loader
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.loader {
+  z-index: 10;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.loader svg path,
+.loader svg rect {
+  fill: green;
+}
