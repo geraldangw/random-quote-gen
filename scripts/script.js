@@ -1,6 +1,8 @@
+var test = true;
 $(function() {
 
   //var declarations for DOM elements
+
   var $quoteOutPut = $('#quoteoutput');
   var $submitbtn = $('#submitbtn');
   var $loader = $('.loader');
