@@ -2,7 +2,6 @@ $(function() {
 
 //var declarations for DOM elements
 
-
 //click
 
 
