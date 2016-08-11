@@ -1,6 +1,8 @@
 @keyframes animatedBackground {
 	from { background-position: 0 0; }
 	to { background-position: 100% 0; }
+  /*0% { background-position: 0 0; }
+  100% { background-position: -100% 0; }*/
 }
 
 html {
@@ -13,10 +15,11 @@ h1 {
 
 body {
   background-image: url("../img/clouds.png");
-  background-size: 180%;
+  background-size: 125%;
   background-position: 0px 0px;
 	background-repeat: repeat-x;
-  animation: animatedBackground 10s linear infinite;
+  animation: animatedBackground 5s linear infinite;
+  overflow: hidden;
 }
 
 #quoteoutput {
@@ -25,7 +28,10 @@ body {
   margin: 0 auto;
   margin-left: 4%;
   border-radius: 5px 20px 5px;
-  padding: 10%;
+  padding: 5%;
+  font-size: 1.5em;
+  font-family: fantasy;
+  letter-spacing: 0.25em;
 }
 
 #container {
@@ -46,17 +52,6 @@ body {
   border: 2px solid #C8CEE3;
 }
 
-/* Styling the animated background*/
-/*#animate-area	{
-	width: 560px;
-	height: 400px;
-	background-image: url(img/clouds.png);
-	background-position: 0px 0px;
-	background-repeat: repeat-x;
-	animation: animatedBackground 40s linear infinite;
-}*/
-
-
 /* Styling the svg loader
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .loader {
@@ -71,5 +66,5 @@ body {
 
 .loader svg path,
 .loader svg rect {
-  fill: green;
+  fill: #40b5ff;
 }

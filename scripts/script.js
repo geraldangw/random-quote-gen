@@ -9,7 +9,6 @@ $(function() {
   $submitbtn.on('click', function(e){
     e.preventDefault();
     $(".outputtext").remove();
-    $(".outputtext").remove();
     //ajax
     $.ajax({
       url: 'https://andruxnet-random-famous-quotes.p.mashape.com/',
