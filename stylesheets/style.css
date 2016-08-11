@@ -1,9 +1,22 @@
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
 html {
   text-align: center;
 }
 
 h1 {
   margin-top: 10%;
+}
+
+body {
+  background-image: url("../img/clouds.png");
+  background-size: 180%;
+  background-position: 0px 0px;
+	background-repeat: repeat-x;
+  animation: animatedBackground 10s linear infinite;
 }
 
 #quoteoutput {
@@ -13,7 +26,6 @@ h1 {
   margin-left: 4%;
   border-radius: 5px 20px 5px;
   padding: 10%;
-  font:
 }
 
 #container {
@@ -33,6 +45,16 @@ h1 {
   border-radius: 5px 20px 5px;
   border: 2px solid #C8CEE3;
 }
+
+/* Styling the animated background*/
+/*#animate-area	{
+	width: 560px;
+	height: 400px;
+	background-image: url(img/clouds.png);
+	background-position: 0px 0px;
+	background-repeat: repeat-x;
+	animation: animatedBackground 40s linear infinite;
+}*/
 
 
 /* Styling the svg loader
