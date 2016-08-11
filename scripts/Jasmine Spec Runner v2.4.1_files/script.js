@@ -1,5 +1,8 @@
-  var test = true;
+
 $(function() {
+
+  var test = true;
+
   //var declarations for DOM elements
 
   var $quoteOutPut = $('#quoteoutput');
