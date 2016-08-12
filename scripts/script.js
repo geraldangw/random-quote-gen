@@ -4,6 +4,56 @@ $(function() {
   var $quoteOutPut = $('#quoteoutput');
   var $submitbtn = $('#submitbtn');
   var $loader = $('.loader');
+  var $weather = $('#weather');
+
+
+// Weather Ajax
+
+  $.ajax({
+    // where the data live
+    url: 'http://api.openweathermap.org/data/2.5/weather?q=Singapore&units=metric&APPID=24801b8eecaa5f34812e5e8f1d25b62d',
+    type: 'GET',
+    // what is their type
+    dataType: 'JSON',
+    // show the loader before making the request
+    beforeSend: function(xhr) {
+      $loader.show();
+    },
+
+  }).done(successFunction)
+    .fail(failFunction);
+  //.always(alwaysFunction);
+
+
+  function successFunction(data) {
+    console.log('in successFunction');
+    // To display degree Celius"&#8451;"
+
+    console.log(data);
+    console.log('Country name: ' + data.name );
+    console.log('Country code: ' + data.sys.country );
+    console.log('Main Temperature: ' + data.main.temp );
+    console.log('Max Temperature: ' + data.main.temp_max );
+    console.log('Min Temperature: ' + data.main.temp_min );
+    console.log('Cloudiness: ' + data.clouds.all + ' % ');
+
+
+
+    $loader.hide();
+    $('<p>Country name: ' + data.name + '</p>').appendTo($weather);
+    $('<p>Country code: ' + data.sys.country + '</p>').appendTo($weather);
+    $('<p>Main Temperature: ' + data.main.temp + '</p>').appendTo($weather);
+    $('<p>Max Temperature: ' + data.main.temp_max + '</p>').appendTo($weather);
+    $('<p>Min Temperature: ' + data.main.temp_min + '</p>').appendTo($weather);
+    $('<p>Cloudiness: ' + data.clouds.all + ' % '+ '</p>').appendTo($weather);
+  }
+
+  function failFunction(request, textStatus, errorThrown) {
+    // hide the list and show the corresponding message
+    $weather.html('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
+  }
+
+
 
   //click
   $submitbtn.on('click', function(e){
