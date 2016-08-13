@@ -4,52 +4,58 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="stylesheets/bulma.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/font-awesome/css/font-awesome.min.css">
     <title> Musings.random() </title>
   </head>
 
   <body>
 
-    <section class="hero is-large is-primary is-bold">
+    <section class="hero is-small is-primary is-bold">
 
       <div class="hero-body">
         <div class="container is-fullwidth">
           <h1 class="title"> Random Famous Quote Generator </h1>
           <h2 class="subtitle"> Press the button to generate a random quote! </h2>
 
-          <button class="button is-danger is-outlined is-large" type="submit" name="submit" id="submitbtn"> Generate </button>
+          <button class="button is-danger is-large" type="submit" name="submit" id="submitbtn"> Generate </button>
         </div>
 
       </div>
     </section>
 
-    <section class="section is-medium">
+    <div class="loader is-loading">
 
-      <div class="columns">
-        <div class="column box content">
-          <h1>
-            This is going to be a random message by someone famous, and most probably dead.
-          </h1>
+    </div>
 
-          <p id="quoteoutput">
-            <p class="loader is-loading">
-            </p>
+    <section class="section" id="middleContent">
+      <div class="container">
+
+        <div class="box content">
+          <div class="defaultText">
+            <h3>To Be or Not to Be...</h3>
+            <p>- Anonymous</p>
+          </div>
+          <div id="quoteoutput"></div>
+        </div>
+
+        <div class="box content">
+          <div class="defaultText">
+            Random Information
+          </div>
+          <p id="contentoutput">
           </p>
         </div>
 
-        <div class="column box content">
-
-          <p id="contentoutput">
-          </p>
-
+        <div class="box content">
+          <div class="content" id="weather">
+          </div>
         </div>
 
       </div>
-
     </section>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
     <script type="text/javascript" src="scripts/action.js"></script>
-
   </body>
 </html>

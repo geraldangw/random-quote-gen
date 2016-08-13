@@ -3,8 +3,10 @@ $(function() {
   //var declarations for DOM elements
   var $quoteOutPut = $('#quoteoutput');
   var $contentOutPut = $('#contentoutput');
+  var $defaultText = $('.defaultText');
   var $submitbtn = $('#submitbtn');
   var $loader = $('.loader');
+  var $weatherCountry = $('#weatherCountry');
   var $weather = $('#weather');
 
   // Weather Ajax
@@ -40,11 +42,10 @@ $(function() {
 
 
       $loader.hide();
-      $('<p>Country name: ' + data.name + '</p>').appendTo($weather);
-      $('<p>Country code: ' + data.sys.country + '</p>').appendTo($weather);
-      $('<p>Main Temperature: ' + data.main.temp + '</p>').appendTo($weather);
-      $('<p>Max Temperature: ' + data.main.temp_max + '</p>').appendTo($weather);
-      $('<p>Min Temperature: ' + data.main.temp_min + '</p>').appendTo($weather);
+      $('<h3>'+ data.name + ', ' + data.sys.country + '</h3>').appendTo($weather);
+      $('<p>Main Temperature: ' + data.main.temp + ' celcius</p>').appendTo($weather);
+      $('<p>Max Temperature: ' + data.main.temp_max + ' celcius </p>').appendTo($weather);
+      $('<p>Min Temperature: ' + data.main.temp_min + ' celcius</p>').appendTo($weather);
       $('<p>Cloudiness: ' + data.clouds.all + ' % '+ '</p>').appendTo($weather);
     }
 
@@ -57,7 +58,7 @@ $(function() {
   $submitbtn.on('click', function(e){
     e.preventDefault();
     $(".outputtext").remove();
-    $(".outputtext").remove();
+    // $(".outputtext").remove();
     //ajax
     $.ajax({
       url: 'https://andruxnet-random-famous-quotes.p.mashape.com/',
@@ -68,7 +69,8 @@ $(function() {
       },
     }).done(function(data){
       $loader.hide();
-      $( '<p class="outputtext">' + data.quote + '</p>' ).appendTo($quoteOutPut);
+      $defaultText.remove();
+      $( '<h3 class="outputtext">' + data.quote + '</h3>' ).appendTo($quoteOutPut);
       $( '<p class="outputtext">' + ' - ' + data.author + '</p>' ).appendTo($quoteOutPut);
       $.ajax({
           type: "GET",
