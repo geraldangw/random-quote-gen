@@ -9,36 +9,40 @@
 
   <body>
 
-    <section class="hero is-medium is-primary is-bold">
+    <section class="hero is-large is-primary is-bold">
 
       <div class="hero-body">
         <div class="container is-fullwidth">
           <h1 class="title"> Random Famous Quote Generator </h1>
           <h2 class="subtitle"> Press the button to generate a random quote! </h2>
-        </div>
-      </div>
 
+          <button class="button is-danger is-outlined is-large" type="submit" name="submit" id="submitbtn"> Generate </button>
+        </div>
+
+      </div>
     </section>
 
     <section class="section is-medium">
 
-      <div class="box container">
-        <div class="content is-medium">
-
-          <h5>
+      <div class="columns">
+        <div class="column box content">
+          <h1>
             This is going to be a random message by someone famous, and most probably dead.
-          </h5>
+          </h1>
 
           <p id="quoteoutput">
             <p class="loader is-loading">
             </p>
           </p>
+        </div>
+
+        <div class="column box content">
+
+          <p id="contentoutput">
+          </p>
 
         </div>
-      </div>
 
-      <div class="container is-fullwidth">
-        <button class="button is-danger is-outlined is-large" type="submit" name="submit" id="submitbtn"> Generate </button>
       </div>
 
     </section>
