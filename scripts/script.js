@@ -61,6 +61,7 @@ $(function() {
     console.log('clicked');
     e.preventDefault();
     $(".outputtext").remove();
+    $(".defaulttext").remove();
     //ajax
     $.ajax({
       url: 'https://andruxnet-random-famous-quotes.p.mashape.com/',
