@@ -58,6 +58,7 @@ $(function() {
 
   //click
   $submitbtn.on('click', function(e){
+    console.log('clicked');
     e.preventDefault();
     $(".outputtext").remove();
     $(".outputtext").remove();
