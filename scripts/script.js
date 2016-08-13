@@ -61,7 +61,6 @@ $(function() {
     console.log('clicked');
     e.preventDefault();
     $(".outputtext").remove();
-    $(".outputtext").remove();
     //ajax
     $.ajax({
       url: 'https://andruxnet-random-famous-quotes.p.mashape.com/',
@@ -88,7 +87,7 @@ $(function() {
           success: function (data, textStatus, jqXHR) {
             console.log(data[1]);
             for (var i = 0; i < data[1].length; i++) {
-              $( '<a href="' + data[3][i] + '">' + '<p class="outputtext">Wiki Output Title: '  + data[1][i] + ' ' + '</p></a>' + '<p>' + data[2][i] + '</p>').appendTo($quoteOutPut);
+              $( '<a class="outputtext" href="' + data[3][i] + '">' + '<p class="outputtext">Wiki Output Title: '  + data[1][i] + ' ' + '</p></a>' + '<p class="outputtext">' + data[2][i] + '</p>').appendTo($quoteOutPut);
             }
       },
     }).fail(function(request, textStatus, errorThrown){
