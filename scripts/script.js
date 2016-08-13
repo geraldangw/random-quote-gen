@@ -6,7 +6,6 @@ $(function() {
   var $defaultText = $('.defaultText');
   var $submitbtn = $('#submitbtn');
   var $loader = $('.loader');
-  var $weatherCountry = $('#weatherCountry');
   var $weather = $('#weather');
 
   // Weather Ajax
