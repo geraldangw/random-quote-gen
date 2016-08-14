@@ -3,65 +3,49 @@ $(function() {
   //var declarations for DOM elements
 
   var $quoteOutPut = $('#quoteoutput');
+  var $contentOutPut = $('#contentoutput');
+  var $defaultText = $('.defaultText');
   var $submitbtn = $('#submitbtn');
   var $loader = $('.loader');
   var $weather = $('#weather');
 
+  // Weather Ajax
 
-// Weather Ajax
+    $.ajax({
+      // where the data live
+      url: 'http://api.openweathermap.org/data/2.5/weather?q=Singapore&units=metric&APPID=24801b8eecaa5f34812e5e8f1d25b62d',
+      type: 'GET',
+      // what is their type
+      dataType: 'JSON',
+      // show the loader before making the request
+      beforeSend: function(xhr) {
+        $loader.show();
+      },
 
-  $.ajax({
-    // where the data live
-    url: 'http://api.openweathermap.org/data/2.5/weather?q=Singapore&units=metric&APPID=24801b8eecaa5f34812e5e8f1d25b62d',
-    type: 'GET',
-    // what is their type
-    dataType: 'JSON',
-    // show the loader before making the request
-    beforeSend: function(xhr) {
-      $loader.show();
-    },
-
-  }).done(successFunction)
-    .fail(failFunction);
-  //.always(alwaysFunction);
-
-
-  function successFunction(data) {
-    console.log('in successFunction');
-    // To display degree Celius"&#8451;"
-
-    console.log(data);
-    console.log('Country name: ' + data.name );
-    console.log('Country code: ' + data.sys.country );
-    console.log('Main Temperature: ' + data.main.temp );
-    console.log('Max Temperature: ' + data.main.temp_max );
-    console.log('Min Temperature: ' + data.main.temp_min );
-    console.log('Cloudiness: ' + data.clouds.all + ' % ');
+    }).done(successFunction)
+      .fail(failFunction);
+    //.always(alwaysFunction);
 
 
+    function successFunction(data) {
+      $loader.hide();
+      $('<h3>'+ data.name + ', ' + data.sys.country + '</h3>').appendTo($weather);
+      $('<p>Main Temperature: ' + data.main.temp + ' celcius</p>').appendTo($weather);
+      $('<p>Max Temperature: ' + data.main.temp_max + ' celcius </p>').appendTo($weather);
+      $('<p>Min Temperature: ' + data.main.temp_min + ' celcius</p>').appendTo($weather);
+      $('<p>Cloudiness: ' + data.clouds.all + ' % '+ '</p>').appendTo($weather);
+    }
 
-    $loader.hide();
-    $('<p>Country name: ' + data.name + '</p>').appendTo($weather);
-    $('<p>Country code: ' + data.sys.country + '</p>').appendTo($weather);
-    $('<p>Main Temperature: ' + data.main.temp + '</p>').appendTo($weather);
-    $('<p>Max Temperature: ' + data.main.temp_max + '</p>').appendTo($weather);
-    $('<p>Min Temperature: ' + data.main.temp_min + '</p>').appendTo($weather);
-    $('<p>Cloudiness: ' + data.clouds.all + ' % '+ '</p>').appendTo($weather);
-  }
-
-  function failFunction(request, textStatus, errorThrown) {
-    // hide the list and show the corresponding message
-    $weather.html('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
-  }
-
-
+    function failFunction(request, textStatus, errorThrown) {
+      // hide the list and show the corresponding message
+      $weather.html('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
+    }
 
   //click
   $submitbtn.on('click', function(e){
-    console.log('clicked');
     e.preventDefault();
     $(".outputtext").remove();
-    $(".outputtext").remove();
+    // $(".outputtext").remove();
     //ajax
     $.ajax({
       url: 'https://andruxnet-random-famous-quotes.p.mashape.com/',
@@ -72,7 +56,8 @@ $(function() {
       },
     }).done(function(data){
       $loader.hide();
-      $( '<p class="outputtext">' + data.quote + '</p>' ).appendTo($quoteOutPut);
+      $defaultText.remove();
+      $( '<h3 class="outputtext">' + data.quote + '</h3>' ).appendTo($quoteOutPut);
       $( '<p class="outputtext">' + ' - ' + data.author + '</p>' ).appendTo($quoteOutPut);
       $.ajax({
           type: "GET",
@@ -88,7 +73,7 @@ $(function() {
           success: function (data, textStatus, jqXHR) {
             console.log(data[1]);
             for (var i = 0; i < data[1].length; i++) {
-              $( '<a class="outputtext" href="' + data[3][i] + '">' + '<p class="outputtext">Wiki Output Title: '  + data[1][i] + ' ' + '</p></a>' + '<p class="outputtext">' + data[2][i] + '</p>').appendTo($quoteOutPut);
+              $( '<a href="' + data[3][i] + '">' + '<p class="outputtext">Wiki Output Title: '  + data[1][i] + ' ' + '</p></a>' + '<p>' + data[2][i] + '</p>').appendTo($contentOutPut);
             }
       },
     }).fail(function(request, textStatus, errorThrown){
