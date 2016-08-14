@@ -9,7 +9,9 @@ describe('check that APIs are working', function(){
   describe('Random Quote Generator API', function(){
 
     it('should send a successful request (receive response) to API', function(){
-      // expect data not to be empty
+      request.get("https://andruxnet-random-famous-quotes.p.mashape.com/", function(error, response, body){
+        expect(response.statusCode).toBe(200);
+      });
     });
   });//end of random quote check
 
