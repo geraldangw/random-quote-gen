@@ -14,7 +14,7 @@ $(function() {
 
     $.ajax({
       // where the data live
-      url: 'http://api.openweathermap.org/data/2.5/weather?q=Singapore&units=metric&APPID=24801b8eecaa5f34812e5e8f1d25b62d',
+      url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22singapore%2Csg%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys',
       type: 'GET',
       // what is their type
       dataType: 'JSON',
@@ -30,11 +30,10 @@ $(function() {
 
     function successFunction(data) {
       $loader.hide();
-      $('<h3>'+ data.name + ', ' + data.sys.country + '</h3>').appendTo($weather);
-      $('<p>Main Temperature: ' + data.main.temp + ' celcius</p>').appendTo($weather);
-      $('<p>Max Temperature: ' + data.main.temp_max + ' celcius </p>').appendTo($weather);
-      $('<p>Min Temperature: ' + data.main.temp_min + ' celcius</p>').appendTo($weather);
-      $('<p>Cloudiness: ' + data.clouds.all + ' % '+ '</p>').appendTo($weather);
+      $('<h3>' + data.query.results.channel.location.city + ',' + data.query.results.channel.location.region + '</h3>').appendTo($weather);
+      $('<p>Wind Speed: ' + data.query.results.channel.wind.speed + '</p>').appendTo($weather);
+      $('<p>Sunset: ' + data.query.results.channel.astronomy.sunset + '</p>').appendTo($weather);
+      $('<p>Temperature: ' + data.query.results.channel.item.condition.temp + ' fahrenheit</p>').appendTo($weather);
     }
 
     function failFunction(request, textStatus, errorThrown) {
