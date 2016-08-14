@@ -14,7 +14,7 @@ $(function() {
 
     $.ajax({
       // where the data live
-      url: 'http://api.openweathermap.org/data/2.5/weather?q=Singapore&units=metric&APPID=24801b8eecaa5f34812e5e8f1d25b62d',
+      url: 'https://api.openweathermap.org/data/2.5/weather?q=Singapore&units=metric&APPID=24801b8eecaa5f34812e5e8f1d25b62d',
       type: 'GET',
       // what is their type
       dataType: 'JSON',
@@ -78,7 +78,7 @@ $(function() {
           $( '<p class="outputtext">' + ' - ' + data.author + '</p>' ).appendTo($quoteOutPut);
           $.ajax({
               type: "GET",
-              url: "http://en.wikipedia.org/w/api.php?callback=?",
+              url: "https://en.wikipedia.org/w/api.php?callback=?",
               // url: "https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=Jimi_Hendrix&callback=?",
               //http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=Stack%20Overflow
               // /w/api.php?action=query&format=json&prop=extracts&titles=Main+Page&exintro=1&explaintext=1
